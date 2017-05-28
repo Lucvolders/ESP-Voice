@@ -1,0 +1,69 @@
+'-----------------------------
+'init
+'-----------------------------
+io(po,d1,0)
+io(po,d2,0)
+io(po,d3,0)
+io(po,d5,0)
+io(po,d6,0)
+io(po,d7,0)
+
+msgbranch [mybranch]
+
+textbox command
+
+wait
+
+[mybranch]
+
+command = msgget("saywhat") 
+command = replace(command , "." , " ")
+print command
+if command = "living room on" then
+io(po,d1,1)
+endif
+if command = "living room off" then
+io(po,d1,0)
+endif
+
+if command = "garage door open" then
+io(po,d2,1)
+endif
+if command = "garage door close" then
+io(po,d2,0)
+endif
+
+if command = "garage light on" then
+io(po,d3,1)
+endif
+if command = "garage light off" then
+io(po,d3,0)
+endif
+
+if command = "bathroom light on" then
+io(po,d5,1)
+endif
+if command = "bathroom light off" then
+io(po,d5,0)
+endif
+
+if command = "living room ceiling light on" then
+io(po,d6,1)
+endif
+if command = "living room ceiling light off" then
+io(po,d6,0)
+endif
+
+if left(command,11) = "temperature" then
+lencom = len(command)
+temperat = right(command, lencom-12)
+print temperat
+temperat2=temperat * 25
+
+io(pwo,d7,temperat2)
+endif
+if command = "temperature" then
+io(pwo,d7,0)
+endif
+
+wait
